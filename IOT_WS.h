@@ -10,7 +10,7 @@
 // Uncomment one of the lines below for whatever DHT sensor type you're using!
 #define DHTTYPE DHT11   // DHT 11
 /*Put your SSID & Password*/
-const char* ssid = "Sub-atomic";  // Enter SSID here
+const char* ssid = "We-Fe";  // Enter SSID here
 const char* password = "akanksha";  //Enter Password here
 
 ESP8266WebServer server(80);
