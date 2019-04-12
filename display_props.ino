@@ -14,7 +14,7 @@ void displayTemp(int n)//temperature
   lcd.print(F("C"));
   lcd.setCursor(0, 3);
   delay(200);
-  lcd.print(F("Code is in GITHUB!!"));
+  lcd.print(F("Code on GITHUB!!"));
 }
 void displayHumidity(int n)//humidity
 {
@@ -45,4 +45,3 @@ void displayAQ(int n)//air quality
   else if (n >= 401) lcd.print(F("Severe"));
   else lcd.print(F("ERROR"));
 }
-

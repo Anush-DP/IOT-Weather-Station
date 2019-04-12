@@ -6,22 +6,11 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <BigNumbers_I2C.h>
-
-LiquidCrystal_I2C lcd(0x27, 20, 4); //size of lcd is 20x4
-BigNumbers_I2C bigNum(&lcd);  //bignumbers
-
-void createLoad();      // initialize loading screen characters
-void loading();         // loading screen animation
-void clear1();          // clear screen animation 1
-void displayTemp(int);  // display temperature
-void win_welcome();     // cool retro welcome screen
-void rain(int);         // cool rainy weather animation
-void sun();             // sunny weather   
-void chineseTextReveal(byte col,byte row,char * text);  // reveal text with Chinese letter effects
-//all display animation related functions are defined in display_fx.ino
+#include "IOT_WS.h"
+#include "LCD_DEF.h"
 
 void setup() {
-  //Wire.begin(D2,D1); //Remove this line if you are using Arduino
+  Wire.begin(D2,D1); //Remove this line if you are using Arduino
   lcd.backlight();
   lcd.begin();
   createLoad();
@@ -38,18 +27,32 @@ void setup() {
 
 void loop()
 {
+  server.handleClient();
   bigNum.begin();
-  displayTemp(37);
+  server.handleClient();
+  displayTemp(Temperature);
+  server.handleClient();
   delay(4000);
-  displayHumidity(45);
+  server.handleClient();
+  displayHumidity(Humidity);
+  server.handleClient();
   delay(4000);
+  server.handleClient();
   displayAQ(400);
+  server.handleClient();
   delay(4000);
+  server.handleClient();
   rain(3000);
+  server.handleClient();
   sun();
+  server.handleClient();
   delay(4000);
+  server.handleClient();
   lcd.clear();
+  server.handleClient();
   lcd.print(F("Credits: DISPLAY ART"));
+  server.handleClient();
   chineseTextReveal(5,2,"ANUSH DP");  // text should be 8 letters/characters long
+  server.handleClient();
   delay(2000);
 }

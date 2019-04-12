@@ -164,8 +164,11 @@ void loading()
       case 11: lcd.print(F("Reloading Matrix.."));
         break;
       case 3: lcd.print(F("Sensing environment."));
+				Temperature = dht.readTemperature();
+				Humidity = dht.readHumidity();
         break;
-      case 7: lcd.print(F("Uploading to cloud.."));
+      case 7: lcd.print(F("Setting up server.."));
+		WIFISetup();
         break;
     }
   }
