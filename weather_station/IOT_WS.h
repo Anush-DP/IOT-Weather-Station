@@ -7,19 +7,18 @@
 #include <LEAmDNS_lwIPdefs.h>
 #include <LEAmDNS_Priv.h>
 
-// Uncomment one of the lines below for whatever DHT sensor type you're using!
-#define DHTTYPE DHT11   // DHT 11
+#define DHTTYPE DHT11
 /*Put your SSID & Password*/
-const char* ssid = "We-Fe";  // Enter SSID here
-const char* password = "akanksha";  //Enter Password here
-
+const char* ssid = "IOT WS";  // Enter SSID here
+const char* password = "password";  //Enter Password here
+MDNSResponder mdns;
 ESP8266WebServer server(80);
 
 // DHT Sensor
-uint8_t DHTPin = D3; 
+uint8_t DHTPin = D3;
 
 // Initialize DHT sensor.
-DHT dht(DHTPin, DHTTYPE);                
+DHT dht(DHTPin, DHTTYPE);
 
 float Temperature;
 float Humidity;

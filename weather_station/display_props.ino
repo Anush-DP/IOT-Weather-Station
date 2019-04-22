@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2019 Anush DP 
- * License: GPL3 
- * 
+   Copyright (C) 2019 Anush DP
+   License: GNU GPL3
+
 */
 void displayTemp(int n)//temperature
 {

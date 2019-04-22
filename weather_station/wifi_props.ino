@@ -1,22 +1,22 @@
 /*
    Copyright (C) 2019 Anush DP
-   License: GPL3
+   License: GNU GPL3
 
 */
 void WIFISetup() {
-  pinMode(DHTPin, INPUT);
-  dht.begin();
+
   //connect to your local wi-fi network
-  MDNS.begin("iot.ws");
   WiFi.begin(ssid, password);
   //check wi-fi is connected to wi-fi network
   while (WiFi.status() != WL_CONNECTED)
   {
     delay(1000);
   }
+  mdns.begin("iot.ws", WiFi.localIP());
   server.on("/", handle_OnConnect);
   server.onNotFound(handle_NotFound);
   server.begin();
+  MDNS.addService("http", "tcp", 80);
 }
 
 void handle_OnConnect() {
@@ -96,11 +96,9 @@ String SendHTML(float Temperaturestat, float Humiditystat) {
   ptr += (int)Humiditystat;
   ptr += "<span class=\"superscript\">%</span></div>\n";
   ptr += "</div>\n";
-  ptr += "\n<br>\n<center><h4>Copyright (C)  J Y K Bhargav & Anush DP</h4></center>";
+  ptr += "\n<br>\n<center><h4>Copyright (C) Anush DP &  J Y K Bhargav</h4></center>";
   ptr += "</div>\n";
   ptr += "</body>\n";
   ptr += "</html>\n";
   return ptr;
 }
-
-

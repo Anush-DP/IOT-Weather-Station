@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2019 Anush DP
-   License: GPL3
+   License: GNU GPL3
 
 */
 void clear1()
@@ -164,11 +164,14 @@ void loading()
       case 11: lcd.print(F("Reloading Matrix.."));
         break;
       case 3: lcd.print(F("Sensing environment."));
-				Temperature = dht.readTemperature();
-				Humidity = dht.readHumidity();
+        pinMode(DHTPin, INPUT);
+        dht.begin();
+        delay(10);
+        Temperature = dht.readTemperature();
+        Humidity = dht.readHumidity();
         break;
       case 7: lcd.print(F("Setting up server.."));
-		WIFISetup();
+        WIFISetup();
         break;
     }
   }
@@ -505,31 +508,31 @@ void sun()
   for (int i = 5; i < 7; i++)
     lcd.write(i);
 }
-void chineseTextReveal(byte col,byte row,char * text)
+void chineseTextReveal(byte col, byte row, char * text)
 {
-	 for (int j = 0; j < 2; j++)
+  for (int j = 0; j < 2; j++)
   {
     for (int i = 0xc8; i <= 0xcf; i++)
     { lcd.setCursor(col, row);
       lcd.write(char(i));
-      lcd.setCursor(col+1, row);
+      lcd.setCursor(col + 1, row);
       lcd.write(char(i - 0x0f));
-      lcd.setCursor(col+2, row);
+      lcd.setCursor(col + 2, row);
       lcd.write(char(i - 0x08));
-      lcd.setCursor(col+3, row);
+      lcd.setCursor(col + 3, row);
       lcd.write(char(i - 0x15));
-      lcd.setCursor(col+4, row);
+      lcd.setCursor(col + 4, row);
       lcd.write(char(i - 0x0f));
-      lcd.setCursor(col+5, row);
+      lcd.setCursor(col + 5, row);
       lcd.write(char(i - 0x08));
-      lcd.setCursor(col+6, row);
+      lcd.setCursor(col + 6, row);
       lcd.write(char(i));
-      lcd.setCursor(col+7, row);
+      lcd.setCursor(col + 7, row);
       lcd.write(char(i - 0x15));
       delay(110);
     }
   }
-  lcd.setCursor(col,row);
+  lcd.setCursor(col, row);
   lcd.print(text);
   delay(2000);
 }

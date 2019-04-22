@@ -7,6 +7,6 @@ void clear1();          // clear screen animation 1
 void displayTemp(int);  // display temperature
 void win_welcome();     // cool retro welcome screen
 void rain(int);         // cool rainy weather animation
-void sun();             // sunny weather   
-void chineseTextReveal(byte col,byte row,char * text);  // reveal text with Chinese letter effects
+void sun();             // sunny weather
+void chineseTextReveal(byte col, byte row, char * text); // reveal text with Chinese letter effects
 //all display animation related functions are defined in display_fx.ino

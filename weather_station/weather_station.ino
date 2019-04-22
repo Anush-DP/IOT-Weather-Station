@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2019 Anush DP
-   License: GPL3
+   License: GNU GPL3
 
 */
 #include <Wire.h>
@@ -10,7 +10,7 @@
 #include "LCD_DEF.h"
 
 void setup() {
-  Wire.begin(D2,D1); //Remove this line if you are using Arduino
+  Wire.begin(D2, D1); //Remove this line if you are using Arduino
   lcd.backlight();
   lcd.begin();
   createLoad();
@@ -27,7 +27,10 @@ void setup() {
 
 void loop()
 {
-  server.handleClient();
+  Temperature = dht.readTemperature();
+  Humidity = dht.readHumidity();
+  for (int i = 0; i < 50; i++)
+    server.handleClient();
   bigNum.begin();
   server.handleClient();
   displayTemp(Temperature);
@@ -52,7 +55,7 @@ void loop()
   server.handleClient();
   lcd.print(F("Credits: DISPLAY ART"));
   server.handleClient();
-  chineseTextReveal(5,2,"ANUSH DP");  // text should be 8 letters/characters long
+  chineseTextReveal(5, 2, "ANUSH DP"); // text should be 8 letters/characters long
   server.handleClient();
-  delay(2000);
+  delay(1000);
 }
