@@ -36,5 +36,5 @@ int getWeatherData()   //client function to send/receive GET request data.
     return;
   }
   
-  retrun root["weather"][0]["id"];
+  return root["weather"][0]["id"];
 }
