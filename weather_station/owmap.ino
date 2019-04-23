@@ -31,10 +31,5 @@ int getWeatherData()   //client function to send/receive GET request data.
   StaticJsonBuffer<1024> json_buf;
   JsonObject &root = json_buf.parseObject(jsonArray);
   
-  if (!root.success())
-  {
-    return;
-  }
-  
   return root["weather"][0]["id"];
 }
