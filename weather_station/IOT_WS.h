@@ -6,6 +6,7 @@
 #include <LEAmDNS.h>
 #include <LEAmDNS_lwIPdefs.h>
 #include <LEAmDNS_Priv.h>
+#include <ArduinoJson.h>
 
 #define DHTTYPE DHT11
 /*Put your SSID & Password*/
@@ -23,3 +24,11 @@ DHT dht(DHTPin, DHTTYPE);
 float Temperature;
 float Humidity;
 void WIFISetup();
+
+String APIKEY = "b5c34829f4340d8a3c3cb867f303f2bd";
+String CityID = "Bangalore, IN";
+
+WiFiClient client;
+char servername[] = "api.openweathermap.org";
+String result;
+

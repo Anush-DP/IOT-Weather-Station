@@ -45,11 +45,7 @@ void loop()
   server.handleClient();
   delay(4000);
   server.handleClient();
-  rain(3000);
-  server.handleClient();
-  sun();
-  server.handleClient();
-  delay(4000);
+  displayWeather(getWeatherData());
   server.handleClient();
   lcd.clear();
   server.handleClient();

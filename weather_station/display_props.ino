@@ -45,3 +45,15 @@ void displayAQ(int n)//air quality
   else if (n >= 401) lcd.print(F("Severe"));
   else lcd.print(F("ERROR"));
 }
+void displayWeather(int id)
+{
+  if (id < 800)
+  {
+    rain(3000);
+  }
+  else
+  {
+    sun();
+    delay(4000);
+  }
+}
