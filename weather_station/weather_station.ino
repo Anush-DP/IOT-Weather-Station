@@ -29,29 +29,17 @@ void loop()
 {
   Temperature = dht.readTemperature();
   Humidity = dht.readHumidity();
-  for (int i = 0; i < 50; i++)
-    server.handleClient();
+  server.handleClient();
   bigNum.begin();
-  server.handleClient();
   displayTemp(Temperature);
-  server.handleClient();
   delay(4000);
-  server.handleClient();
   displayHumidity(Humidity);
-  server.handleClient();
   delay(4000);
-  server.handleClient();
   displayAQ(400);
-  server.handleClient();
   delay(4000);
-  server.handleClient();
   displayWeather(getWeatherData());
-  server.handleClient();
   lcd.clear();
-  server.handleClient();
   lcd.print(F("Credits: DISPLAY ART"));
-  server.handleClient();
   chineseTextReveal(5, 2, "ANUSH DP"); // text should be 8 letters/characters long
-  server.handleClient();
   delay(1000);
 }
